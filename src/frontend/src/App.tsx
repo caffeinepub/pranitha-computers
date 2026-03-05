@@ -15,7 +15,34 @@ import {
   Zap,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+/* ── Typing animation hook ── */
+function useTypingEffect(text: string, speed = 60, startDelay = 400) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  const indexRef = useRef(0);
+
+  useEffect(() => {
+    indexRef.current = 0;
+    setDisplayed("");
+    setDone(false);
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        indexRef.current += 1;
+        setDisplayed(text.slice(0, indexRef.current));
+        if (indexRef.current >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+      return () => clearInterval(interval);
+    }, startDelay);
+    return () => clearTimeout(timeout);
+  }, [text, speed, startDelay]);
+
+  return { displayed, done };
+}
 
 /* ── Smooth-scroll helper ── */
 function scrollTo(id: string) {
@@ -224,6 +251,17 @@ function Header() {
    Hero Section
 ════════════════════════════════════════════════ */
 function HeroSection() {
+  const line1 = useTypingEffect("Welcome to", 70, 300);
+  const [startLine2, setStartLine2] = useState(false);
+  useEffect(() => {
+    if (line1.done) setStartLine2(true);
+  }, [line1.done]);
+  const line2 = useTypingEffect(
+    "Pranitha Computers",
+    70,
+    startLine2 ? 80 : 999999,
+  );
+
   return (
     <section
       id="home"
@@ -260,23 +298,27 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-6"
-        >
-          <span className="block text-white">Welcome to</span>
-          <span className="block text-gradient">Pranitha Computers</span>
-        </motion.h1>
+        {/* Title with typing effect */}
+        <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-6 min-h-[1.9em]">
+          <span className="block text-white">
+            {line1.displayed}
+            {!line1.done && (
+              <span className="inline-block w-[3px] h-[0.85em] bg-white align-middle ml-1 animate-[blink_0.8s_step-end_infinite]" />
+            )}
+          </span>
+          <span className="block text-gradient">
+            {line2.displayed}
+            {line1.done && !line2.done && (
+              <span className="inline-block w-[3px] h-[0.85em] bg-[oklch(0.72_0.18_220)] align-middle ml-1 animate-[blink_0.8s_step-end_infinite]" />
+            )}
+          </span>
+        </h1>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
+          animate={{ opacity: line2.done ? 1 : 0, y: line2.done ? 0 : 20 }}
+          transition={{ duration: 0.7 }}
           className="text-lg sm:text-xl md:text-2xl text-[oklch(0.75_0.04_255)] max-w-2xl mx-auto mb-10 font-light leading-relaxed"
         >
           Expert computer repair and laptop service solutions.
@@ -288,8 +330,8 @@ function HeroSection() {
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          animate={{ opacity: line2.done ? 1 : 0, y: line2.done ? 0 : 20 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <button
