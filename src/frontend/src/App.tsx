@@ -8,6 +8,7 @@ import {
   Menu,
   Monitor,
   Phone,
+  Printer,
   Settings,
   Shield,
   X,
@@ -63,6 +64,14 @@ const SERVICES = [
     color: "from-violet-500/20 to-indigo-500/10",
     glow: "group-hover:shadow-[0_0_30px_oklch(0.60_0.25_300/0.3)]",
     iconColor: "text-violet-400",
+  },
+  {
+    icon: Printer,
+    title: "Printer Service",
+    desc: "Inkjet & laser printer repair, cartridge replacement, print head cleaning, driver installation and all brand printer maintenance.",
+    color: "from-teal-500/20 to-cyan-500/10",
+    glow: "group-hover:shadow-[0_0_30px_oklch(0.75_0.15_185/0.3)]",
+    iconColor: "text-teal-400",
   },
 ];
 
@@ -355,10 +364,10 @@ function ServicesSection() {
         </motion.div>
 
         {/* Service cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {SERVICES.map((svc, i) => {
             const Icon = svc.icon;
-            const ocidIndex = (i + 1) as 1 | 2 | 3 | 4;
+            const ocidIndex = (i + 1) as 1 | 2 | 3 | 4 | 5;
             return (
               <motion.div
                 key={svc.title}
