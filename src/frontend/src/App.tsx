@@ -104,14 +104,31 @@ function Header() {
           {/* Logo */}
           <motion.button
             onClick={() => handleNav("home")}
-            className="flex items-center gap-2.5 group focus:outline-none"
+            className="flex flex-row items-center gap-3 group focus:outline-none"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
+            data-ocid="header.link"
+            aria-label="Pranitha Computers — Go to home"
           >
-            <div className="w-9 h-9 rounded-lg bg-btn-primary flex items-center justify-center shadow-glow-sm flex-shrink-0">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-display font-bold text-lg md:text-xl text-gradient leading-none">
+            <img
+              src="/assets/uploads/Logo-Pranitha-1-1.png"
+              alt="Pranitha Computers"
+              className="h-10 md:h-12 w-10 md:w-12 object-cover rounded-full"
+              style={{
+                filter: "drop-shadow(0 2px 8px oklch(0.55 0.24 290 / 0.35))",
+              }}
+            />
+            <span
+              className="font-display font-bold text-base md:text-lg leading-tight tracking-tight"
+              style={{
+                background:
+                  "linear-gradient(90deg, oklch(0.72 0.18 220), oklch(0.75 0.20 290))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textShadow: "none",
+              }}
+            >
               Pranitha Computers
             </span>
           </motion.button>
@@ -235,16 +252,6 @@ function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-[oklch(0.72_0.18_220/0.4)] bg-[oklch(0.72_0.18_220/0.08)] text-[oklch(0.82_0.12_220)] text-sm font-medium"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.72_0.18_220)] animate-pulse" />
-          Trusted IT Service Provider — Trichy
-        </motion.div>
-
         {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -538,7 +545,7 @@ function ContactSection() {
       icon: Phone,
       label: "Phone",
       value: "+91 90806 74848",
-      sub: "Mon–Sat, 9AM–7PM",
+      sub: "Mon–Sun, 9AM–10PM (All Days Open)",
       href: "tel:+919080674848",
       color: "text-cyan-400",
       bg: "bg-cyan-500/10",
@@ -679,16 +686,6 @@ function Footer() {
     <footer className="relative py-10 bg-[oklch(0.08_0.025_262)] border-t border-[oklch(0.20_0.04_265)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-btn-primary flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-display font-bold text-[oklch(0.80_0.04_250)] text-sm">
-              Pranitha Computers
-            </span>
-          </div>
-
           {/* Copyright */}
           <div className="text-center">
             <p className="text-[oklch(0.50_0.04_255)] text-sm">
