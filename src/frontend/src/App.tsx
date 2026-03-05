@@ -707,20 +707,6 @@ function Footer() {
               </span>
             </p>
           </div>
-
-          {/* Caffeine attribution */}
-          <p className="text-[oklch(0.45_0.04_255)] text-xs">
-            Built with <span className="text-[oklch(0.65_0.22_20)]">♥</span>{" "}
-            using{" "}
-            <a
-              href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[oklch(0.65_0.10_250)] hover:text-[oklch(0.78_0.14_220)] transition-colors"
-            >
-              caffeine.ai
-            </a>
-          </p>
         </div>
       </div>
     </footer>
