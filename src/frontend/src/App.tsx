@@ -520,9 +520,8 @@ function AboutSection() {
               <strong className="text-white font-semibold">
                 Pranitha Computers
               </strong>{" "}
-              is a trusted IT service provider in Trichy, delivering
-              professional laptop repair, software support, OS installation, and
-              CCTV security setup.
+              is trusted in Trichy, delivering professional laptop repair,
+              software support, OS installation, and CCTV security setup.
             </p>
             <p className="text-[oklch(0.65_0.04_255)] leading-relaxed mb-8">
               With over 8 years of hands-on experience, our team of certified
