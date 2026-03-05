@@ -689,24 +689,20 @@ function ContactSection() {
    Footer
 ════════════════════════════════════════════════ */
 function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="relative py-10 bg-[oklch(0.08_0.025_262)] border-t border-[oklch(0.20_0.04_265)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-center gap-1 text-center">
           {/* Copyright */}
-          <div className="text-center">
-            <p className="text-[oklch(0.50_0.04_255)] text-sm">
-              © {year} Pranitha Computers. All Rights Reserved.
-            </p>
-            <p className="text-[oklch(0.45_0.06_265)] text-xs mt-0.5">
-              Powered by{" "}
-              <span className="text-[oklch(0.72_0.18_220)] font-semibold">
-                NextYU Solution
-              </span>
-            </p>
-          </div>
+          <p className="text-[oklch(0.50_0.04_255)] text-sm">
+            © 2026 . NextYU Solution All Rights Reserved.
+          </p>
+          <p className="text-[oklch(0.45_0.06_265)] text-xs">
+            Powered by{" "}
+            <span className="text-[oklch(0.72_0.18_220)] font-semibold">
+              NextYU Solution
+            </span>
+          </p>
         </div>
       </div>
     </footer>
