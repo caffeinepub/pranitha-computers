@@ -259,8 +259,8 @@ function HeroSection() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-6"
         >
-          <span className="block text-white">Laptop</span>
-          <span className="block text-gradient">Repair Center</span>
+          <span className="block text-white">Welcome to</span>
+          <span className="block text-gradient">Pranitha Computers</span>
         </motion.h1>
 
         {/* Subtitle */}
