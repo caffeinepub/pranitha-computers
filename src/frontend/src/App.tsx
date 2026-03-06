@@ -1,6 +1,6 @@
 import {
+  BadgeCheck,
   Camera,
-  ChevronDown,
   Clock,
   Laptop,
   Mail,
@@ -11,6 +11,9 @@ import {
   Printer,
   Settings,
   Shield,
+  Stethoscope,
+  Trophy,
+  Wallet,
   X,
   Zap,
 } from "lucide-react";
@@ -321,7 +324,8 @@ function HeroSection() {
           transition={{ duration: 0.7 }}
           className="text-lg sm:text-xl md:text-2xl text-[oklch(0.75_0.04_255)] max-w-2xl mx-auto mb-10 font-light leading-relaxed"
         >
-          Expert computer repair and laptop service solutions.
+          Expert computer repair and laptop service, Printers &amp; CCTV Camera
+          Installation.
           <span className="block text-[oklch(0.65_0.04_255)] text-base sm:text-lg mt-1">
             Fast · Reliable · Affordable
           </span>
@@ -351,22 +355,6 @@ function HeroSection() {
             Contact Us
           </button>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.button
-          type="button"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          onClick={() => scrollTo("services")}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[oklch(0.55_0.04_255)] hover:text-[oklch(0.72_0.18_220)] transition-colors cursor-pointer focus:outline-none"
-          aria-label="Scroll to services"
-        >
-          <span className="text-xs font-medium tracking-widest uppercase">
-            Scroll
-          </span>
-          <ChevronDown className="w-5 h-5 animate-bounce" />
-        </motion.button>
       </div>
     </section>
   );
@@ -481,6 +469,281 @@ function ServicesSection() {
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.40_0.10_260/0.3)] to-transparent" />
     </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   Why Choose Us Section
+════════════════════════════════════════════════ */
+const WHY_CHOOSE_US = [
+  {
+    icon: Trophy,
+    title: "8+ Years Experience",
+    desc: "Over eight years of trusted hands-on service in Trichy.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Certified Technicians",
+    desc: "Our team holds industry certifications for quality repairs.",
+  },
+  {
+    icon: Zap,
+    title: "Same Day Service",
+    desc: "Fast turnaround — most repairs completed the same day.",
+  },
+  {
+    icon: Wallet,
+    title: "Affordable Pricing",
+    desc: "Competitive and transparent pricing with no hidden fees.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Free Diagnosis",
+    desc: "We diagnose your device at no cost before any repair work.",
+  },
+];
+
+function WhyChooseUsSection() {
+  return (
+    <section id="why-choose-us" className="relative py-20 overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.72_0.18_220/0.4)] to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-[oklch(0.72_0.18_220/0.04)] blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14"
+        >
+          <span className="inline-block text-[oklch(0.72_0.18_220)] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+            Our Strengths
+          </span>
+          <h2 className="font-display font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
+            Why Choose <span className="text-gradient">Pranitha Computers</span>
+          </h2>
+          <p className="text-[oklch(0.65_0.04_255)] text-lg max-w-xl mx-auto">
+            We combine expertise, speed, and value to give you the best repair
+            experience.
+          </p>
+        </motion.div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
+          {WHY_CHOOSE_US.map((item, i) => {
+            const Icon = item.icon;
+            const ocidIndex = (i + 1) as 1 | 2 | 3 | 4 | 5;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                data-ocid={`why-choose-us.card.${ocidIndex}`}
+                className="group flex flex-col items-center text-center p-6 rounded-2xl border border-[oklch(0.25_0.05_265)] bg-card-gradient hover:border-[oklch(0.72_0.18_220/0.6)] hover:-translate-y-2 hover:shadow-[0_0_30px_oklch(0.72_0.18_220/0.25)] transition-all duration-300 cursor-default"
+              >
+                {/* Icon */}
+                <div className="mb-5 w-16 h-16 rounded-2xl bg-[oklch(0.18_0.04_265)] border border-[oklch(0.28_0.06_265)] flex items-center justify-center group-hover:border-[oklch(0.72_0.18_220/0.5)] group-hover:bg-[oklch(0.72_0.18_220/0.1)] transition-all duration-300">
+                  <Icon className="w-8 h-8 text-[oklch(0.72_0.18_220)] group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="font-display font-bold text-[1.1rem] text-white mb-2 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-[oklch(0.62_0.04_255)] text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.40_0.10_260/0.3)] to-transparent" />
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   Brands Section
+════════════════════════════════════════════════ */
+const BRANDS = ["Dell", "HP", "Lenovo", "Asus", "Acer", "Apple"];
+
+function BrandsSection() {
+  return (
+    <section
+      id="brands"
+      className="relative py-20 bg-section-alt overflow-hidden"
+    >
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.55_0.24_290/0.4)] to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-[oklch(0.55_0.24_290/0.04)] blur-[100px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
+          <span className="inline-block text-[oklch(0.72_0.18_220)] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+            Compatible With
+          </span>
+          <h2 className="font-display font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
+            Brands We <span className="text-gradient">Support</span>
+          </h2>
+          <p className="text-[oklch(0.65_0.04_255)] text-lg max-w-xl mx-auto">
+            We service and repair all major computer and laptop brands.
+          </p>
+        </motion.div>
+
+        {/* Brand tiles */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          {BRANDS.map((brand, i) => {
+            const ocidIndex = (i + 1) as 1 | 2 | 3 | 4 | 5 | 6;
+            return (
+              <motion.div
+                key={brand}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                data-ocid={`brands.card.${ocidIndex}`}
+                className="rounded-2xl border border-[oklch(0.25_0.05_265)] bg-[oklch(0.14_0.03_260/0.5)] p-6 flex items-center justify-center text-white font-display font-bold text-xl hover:border-[oklch(0.72_0.18_220/0.5)] hover:-translate-y-1 hover:shadow-[0_0_20px_oklch(0.72_0.18_220/0.15)] transition-all duration-300 cursor-default select-none"
+              >
+                {brand}
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.40_0.10_260/0.3)] to-transparent" />
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   Customer Reviews Section
+════════════════════════════════════════════════ */
+const REVIEWS = [
+  {
+    name: "Sivakumar Yuvaraj",
+    text: "Fast laptop repair service. My Dell laptop motherboard issue was fixed within one day.",
+    date: "March 2025",
+  },
+  {
+    name: "Nirali",
+    text: "Very affordable service and friendly technician. Highly recommended.",
+    date: "June 2025",
+  },
+];
+
+function CustomerReviewsSection() {
+  return (
+    <section id="reviews" className="relative py-20 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.72_0.18_220/0.4)] to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[oklch(0.55_0.24_290/0.05)] blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
+          <span className="inline-block text-[oklch(0.72_0.18_220)] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+            What Our Customers Say
+          </span>
+          <h2 className="font-display font-black text-4xl md:text-5xl text-white mb-4 leading-tight">
+            Customer <span className="text-gradient">Reviews</span>
+          </h2>
+          <p className="text-[oklch(0.65_0.04_255)] text-lg max-w-md mx-auto">
+            Real feedback from our happy customers in Trichy.
+          </p>
+        </motion.div>
+
+        {/* Review cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {REVIEWS.map((review, i) => {
+            const ocidIndex = (i + 1) as 1 | 2;
+            return (
+              <motion.div
+                key={review.name}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                data-ocid={`reviews.card.${ocidIndex}`}
+                className="backdrop-blur-sm bg-[oklch(0.14_0.03_260/0.4)] border border-[oklch(0.25_0.05_265)] rounded-2xl p-8 hover:border-[oklch(0.55_0.24_290/0.5)] hover:-translate-y-2 hover:shadow-[0_0_30px_oklch(0.55_0.24_290/0.15)] transition-all duration-300 cursor-default"
+              >
+                {/* Stars */}
+                <div className="text-yellow-400 text-lg mb-4 tracking-wide">
+                  ★★★★★
+                </div>
+                {/* Review text */}
+                <p className="text-[oklch(0.65_0.04_255)] text-base leading-relaxed mb-6">
+                  "{review.text}"
+                </p>
+                {/* Reviewer name */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[oklch(0.72_0.18_220/0.3)] to-[oklch(0.55_0.24_290/0.3)] border border-[oklch(0.40_0.10_265/0.5)] flex items-center justify-center flex-shrink-0">
+                    <span className="font-display font-bold text-white text-sm">
+                      {review.name[0]}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-white text-[1.05rem] leading-snug">
+                      {review.name}
+                    </div>
+                    <div className="text-[oklch(0.55_0.04_255)] text-xs">
+                      Verified Customer &middot; {review.date}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[oklch(0.40_0.10_260/0.3)] to-transparent" />
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   WhatsApp Floating Button
+════════════════════════════════════════════════ */
+function WhatsAppFloatingButton() {
+  return (
+    <a
+      href="https://wa.me/919080674848"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-ocid="whatsapp.button"
+      aria-label="Chat on WhatsApp"
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] text-white font-semibold px-5 py-3 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_4px_30px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-all duration-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="white"
+        width="24"
+        height="24"
+        aria-hidden="true"
+        className="flex-shrink-0"
+      >
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+      </svg>
+      <span className="text-sm whitespace-nowrap">Chat on WhatsApp</span>
+    </a>
   );
 }
 
@@ -736,7 +999,7 @@ function Footer() {
         <div className="flex flex-col items-center justify-center gap-1 text-center">
           {/* Copyright */}
           <p className="text-[oklch(0.50_0.04_255)] text-sm">
-            © 2026 . NextYU Solution All Rights Reserved.
+            © 2025 . NextYU Solution All Rights Reserved.
           </p>
           <p className="text-[oklch(0.45_0.06_265)] text-xs">
             Powered by{" "}
@@ -763,10 +1026,14 @@ export default function App() {
       <main>
         <HeroSection />
         <ServicesSection />
+        <WhyChooseUsSection />
+        <BrandsSection />
+        <CustomerReviewsSection />
         <AboutSection />
         <ContactSection />
       </main>
       <Footer />
+      <WhatsAppFloatingButton />
     </div>
   );
 }
