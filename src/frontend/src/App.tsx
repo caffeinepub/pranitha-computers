@@ -571,30 +571,17 @@ function WhyChooseUsSection() {
    Brands Section
 ════════════════════════════════════════════════ */
 const BRANDS = [
-  {
-    name: "CP PLUS",
-    logo: "/assets/generated/brand-cpplus-transparent.dim_300x120.png",
-  },
-  {
-    name: "Samsung",
-    logo: "/assets/generated/brand-samsung-transparent.dim_300x120.png",
-  },
-  {
-    name: "Hikvision",
-    logo: "/assets/generated/brand-hikvision-transparent.dim_300x120.png",
-  },
-  {
-    name: "Canon",
-    logo: "/assets/generated/brand-canon-transparent.dim_300x120.png",
-  },
-  {
-    name: "Epson",
-    logo: "/assets/generated/brand-epson-transparent.dim_300x120.png",
-  },
-  {
-    name: "Brother",
-    logo: "/assets/generated/brand-brother-transparent.dim_300x120.png",
-  },
+  "Dell",
+  "HP",
+  "Lenovo",
+  "Asus",
+  "Acer",
+  "Apple",
+  "CP PLUS",
+  "Samsung",
+  "Hikvision",
+  "Canon",
+  "Epson",
 ];
 
 function BrandsSection() {
@@ -628,30 +615,31 @@ function BrandsSection() {
         </motion.div>
 
         {/* Brand tiles */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-          {BRANDS.map((brand, i) => {
-            const ocidIndex = (i + 1) as 1 | 2 | 3 | 4 | 5 | 6;
-            return (
-              <motion.div
-                key={brand.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                data-ocid={`brands.card.${ocidIndex}`}
-                className="rounded-2xl border border-[oklch(0.25_0.05_265)] bg-[oklch(0.14_0.03_260/0.5)] p-5 flex flex-col items-center justify-center gap-3 hover:border-[oklch(0.72_0.18_220/0.5)] hover:-translate-y-1 hover:shadow-[0_0_20px_oklch(0.72_0.18_220/0.15)] transition-all duration-300 cursor-default select-none"
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+          {BRANDS.map((brand, i) => (
+            <motion.div
+              key={brand}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              data-ocid={`brands.card.${i + 1}`}
+              className="rounded-2xl border border-[oklch(0.25_0.05_265)] bg-[oklch(0.14_0.03_260/0.5)] px-4 py-5 flex items-center justify-center hover:border-[oklch(0.72_0.18_220/0.6)] hover:-translate-y-1 hover:shadow-[0_0_22px_oklch(0.72_0.18_220/0.2)] transition-all duration-300 cursor-default select-none"
+            >
+              <span
+                className="text-white font-bold text-base tracking-wide text-center leading-snug"
+                style={{
+                  background:
+                    "linear-gradient(90deg, oklch(0.90 0.04 250), oklch(0.82 0.10 220))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
               >
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="h-10 w-auto object-contain filter brightness-0 invert opacity-90 hover:opacity-100 transition-opacity duration-300"
-                />
-                <span className="text-[oklch(0.70_0.05_255)] text-xs font-semibold tracking-wider uppercase">
-                  {brand.name}
-                </span>
-              </motion.div>
-            );
-          })}
+                {brand}
+              </span>
+            </motion.div>
+          ))}
         </div>
       </div>
 
